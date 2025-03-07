@@ -22,22 +22,26 @@ This project provides an AWS Lambda function that automates sentiment analysis f
 
 ### Input & Output File Format
 #### Input CSV
-The input file must contain a column named `review_description`.
+The input file must be in CSV format with a column named `review_description`.
 
-```csv
-review_id,review_description
-1,"Great app, love it!"
-2,"Terrible experience."
-```
+**Example Input:**
+
+| review_id | review_description                                  |
+|-----------|---------------------------------------------------|
+| 1         | "The product quality is excellent and exceeded my expectations." |
+| 2         | "Not worth the money, very disappointed."        |
+| 3         | "It's okay, nothing special."                   |
 
 #### Output CSV
-The output file includes an additional `Sentiment` column.
+The output file will also be in CSV format and include an additional `Sentiment` column.
 
-```csv
-review_id,review_description,Sentiment
-1,"Great app, love it!",POSITIVE
-2,"Terrible experience.",NEGATIVE
-```
+**Example Output:**
+
+| review_id | review_description                                  | Sentiment |
+|-----------|---------------------------------------------------|-----------|
+| 1         | "The product quality is excellent and exceeded my expectations." | POSITIVE  |
+| 2         | "Not worth the money, very disappointed."        | NEGATIVE  |
+| 3         | "It's okay, nothing special."                   | NEUTRAL   |
 
 ## Deployment Steps
 
@@ -59,5 +63,5 @@ review_id,review_description,Sentiment
 - Reviews are processed sequentially; consider batching or multiprocessing for high-volume workloads.
 - Only CSV files with valid UTF-8 encoding are supported.
 
-This repository provides a scalable and automated solution for sentiment analysis using AWS services
+This repository provides a scalable and automated solution for sentiment analysis using AWS services.
 
